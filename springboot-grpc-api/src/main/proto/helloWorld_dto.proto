@@ -1,0 +1,17 @@
+//声明protobuf版本为proto3
+syntax = "proto3";
+
+//消息实体生成包路径
+package com.fox.grpc.helloworld.dto;
+
+//如果为true时message会生成多个类
+option java_multiple_files = true;
+
+//方法请求实体
+message GetRequest {
+  string parameter = 1;
+}
+//方法返回实体
+message GetResponse {
+  string parameter = 1;
+}

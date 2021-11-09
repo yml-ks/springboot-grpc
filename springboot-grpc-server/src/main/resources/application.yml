@@ -1,0 +1,47 @@
+grpc:
+   server:
+      port: 9091
+      in-process-name: springboot-grpc-server
+   client:
+      #允许客户端在同一应用程序内使用以下配置连接到服务器
+      inProcess:
+         address: in-process:springboot-grpc-server
+spring:
+   profiles:
+      active: dev
+   application:
+      name: springboot-grpc-server
+   datasource:
+      name: dev
+      url: jdbc:mysql://127.0.0.1:3306/ceshi?useUnicode=true&characterEncoding=UTF8&allowMultiQueries=true&useSSL=false&serverTimezone=UTC
+      username: root
+      password: 123456
+      druid:
+         driver-class-name: com.mysql.cj.jdbc.Driver
+         initial-size: 1
+         max-active: 20
+         min-idle: 1
+         max-wait: 60000
+         pool-prepared-statements: false
+         validation-query: select 'x'
+         test-on-borrow: false
+         test-on-return: false
+         test-while-idle: true
+         time-between-eviction-runs-millis: 60000
+         min-evictable-idle-time-millis: 300000
+logging:
+   level:
+      root: INFO
+      org.hibernate: INFO
+      org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+      org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
+      com.springms: DEBUG
+      org.springframework.transaction: TRACE
+      org.springframework.jdbc.datasource: TRACE
+      org.mybatis.spring.SqlSessionUtils: TRACE
+      org.mybatis.spring.transaction: TRACE
+      org.springframework.scheduling: INFO
+      org.springframework: INFO
+      com.fox: DEBUG
+      org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod: TRACE
+      org.springframework.boot.context.config.ConfigFileApplicationListener: TRACE
